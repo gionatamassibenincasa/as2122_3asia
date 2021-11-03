@@ -1,7 +1,36 @@
 #include <iostream>
 #include <cmath>
+#include <cassert>
 
 using namespace std;
+
+double quadrato(double x) {
+  return x * x;
+}
+
+void testQuadrato() {
+  assert(quadrato(2.0) == 4.0);
+  assert(quadrato(-2.0) == 4.0);
+  assert(quadrato(0.0) == 0.0);
+  assert(quadrato(12.3) == 12.3 * 12.3);
+}
+
+double perimetro(double base_maggiore,
+                 double base_minore,
+                 double altezza) {
+  double cateto = base_maggiore - base_minore;
+  double ipotenusa = sqrt(
+    quadrato(cateto) + quadrato(altezza)
+  );
+  return base_maggiore + altezza +
+         base_minore + ipotenusa;
+}
+
+void testPerimetro() {
+  assert(perimetro(1, 1, 1) == 4);
+  assert(perimetro(4, 1, 4) == 14);
+  assert(perimetro(15, 10, 12) == 50);
+}
 
 /*
 perimetro_trapezio_rettangolo
@@ -25,15 +54,10 @@ int main() {
   cout << "Altezza: ";
   cin >> altezza;
 
-  double cateto = base_maggiore - base_minore;
-  double ipotenusa = sqrt(
-    cateto * cateto + altezza * altezza
-  );
-  double perimetro = base_maggiore +
-                     altezza +
-                     base_minore +
-                     ipotenusa;
-  cout << "Perimetro: " << perimetro << endl;
+  cout << "Perimetro: " << perimetro(base_maggiore, base_minore, altezza) << endl;
+
+  testQuadrato();
+  testPerimetro();
 
   return 0;
 }
