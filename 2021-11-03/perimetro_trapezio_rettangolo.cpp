@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
 #include <cassert>
-
 using namespace std;
 
 double quadrato(double x) {
