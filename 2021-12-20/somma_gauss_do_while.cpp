@@ -13,7 +13,7 @@
 using namespace std;
 
 /**
- * @brief Calcola la somma 1 + 2 + 3 + ... + n-2 + n-1 + n usando la ripetizione precondizionale
+ * @brief Calcola la somma 1 + 2 + 3 + ... + n-2 + n-1 + n usando la ripetizione do while
  * 
  * @param n l'ultimo numero da aggiungere
  * @return int 1 + 2 + 3 + ... + n-2 + n-1 + n
