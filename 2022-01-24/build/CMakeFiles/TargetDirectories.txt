@@ -1,0 +1,6 @@
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/rebuild_cache.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/edit_cache.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/04_fattoriale.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/03_quadrato.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/01_ridotto.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/02_ciao_mondo.dir

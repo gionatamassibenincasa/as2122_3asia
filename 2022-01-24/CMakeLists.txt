@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.10)
+project(compito)
+add_executable(01_ridotto ridotto.cpp)
+add_executable(02_ciao_mondo ciao_mondo.cpp)
+add_executable(03_quadrato quadrato.cpp)
+add_executable(04_fattoriale fattoriale.cpp)

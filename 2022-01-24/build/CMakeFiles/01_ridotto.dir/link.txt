@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/01_ridotto.dir/ridotto.cpp.o  -o 01_ridotto 
