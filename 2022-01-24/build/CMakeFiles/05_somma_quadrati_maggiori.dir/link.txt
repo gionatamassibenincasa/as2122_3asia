@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/05_somma_quadrati_maggiori.dir/somma_quadrati_maggiori.cpp.o  -o 05_somma_quadrati_maggiori 

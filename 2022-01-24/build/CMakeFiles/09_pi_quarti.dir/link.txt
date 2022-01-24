@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/09_pi_quarti.dir/pi_quarti.cpp.o  -o 09_pi_quarti 

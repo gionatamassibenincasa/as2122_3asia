@@ -111,30 +111,56 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named 04_fattoriale
+# Target rules for targets named 09_pi_quarti
 
 # Build rule for target.
-04_fattoriale: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 04_fattoriale
-.PHONY : 04_fattoriale
+09_pi_quarti: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 09_pi_quarti
+.PHONY : 09_pi_quarti
 
 # fast build rule for target.
-04_fattoriale/fast:
-	$(MAKE) -f CMakeFiles/04_fattoriale.dir/build.make CMakeFiles/04_fattoriale.dir/build
-.PHONY : 04_fattoriale/fast
+09_pi_quarti/fast:
+	$(MAKE) -f CMakeFiles/09_pi_quarti.dir/build.make CMakeFiles/09_pi_quarti.dir/build
+.PHONY : 09_pi_quarti/fast
 
 #=============================================================================
-# Target rules for targets named 03_quadrato
+# Target rules for targets named 08_somma_inversi_potenze
 
 # Build rule for target.
-03_quadrato: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 03_quadrato
-.PHONY : 03_quadrato
+08_somma_inversi_potenze: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 08_somma_inversi_potenze
+.PHONY : 08_somma_inversi_potenze
 
 # fast build rule for target.
-03_quadrato/fast:
-	$(MAKE) -f CMakeFiles/03_quadrato.dir/build.make CMakeFiles/03_quadrato.dir/build
-.PHONY : 03_quadrato/fast
+08_somma_inversi_potenze/fast:
+	$(MAKE) -f CMakeFiles/08_somma_inversi_potenze.dir/build.make CMakeFiles/08_somma_inversi_potenze.dir/build
+.PHONY : 08_somma_inversi_potenze/fast
+
+#=============================================================================
+# Target rules for targets named 07_massimo3
+
+# Build rule for target.
+07_massimo3: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 07_massimo3
+.PHONY : 07_massimo3
+
+# fast build rule for target.
+07_massimo3/fast:
+	$(MAKE) -f CMakeFiles/07_massimo3.dir/build.make CMakeFiles/07_massimo3.dir/build
+.PHONY : 07_massimo3/fast
+
+#=============================================================================
+# Target rules for targets named 02_ciao_mondo
+
+# Build rule for target.
+02_ciao_mondo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 02_ciao_mondo
+.PHONY : 02_ciao_mondo
+
+# fast build rule for target.
+02_ciao_mondo/fast:
+	$(MAKE) -f CMakeFiles/02_ciao_mondo.dir/build.make CMakeFiles/02_ciao_mondo.dir/build
+.PHONY : 02_ciao_mondo/fast
 
 #=============================================================================
 # Target rules for targets named 01_ridotto
@@ -150,17 +176,56 @@ depend:
 .PHONY : 01_ridotto/fast
 
 #=============================================================================
-# Target rules for targets named 02_ciao_mondo
+# Target rules for targets named 05_somma_quadrati_maggiori
 
 # Build rule for target.
-02_ciao_mondo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 02_ciao_mondo
-.PHONY : 02_ciao_mondo
+05_somma_quadrati_maggiori: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 05_somma_quadrati_maggiori
+.PHONY : 05_somma_quadrati_maggiori
 
 # fast build rule for target.
-02_ciao_mondo/fast:
-	$(MAKE) -f CMakeFiles/02_ciao_mondo.dir/build.make CMakeFiles/02_ciao_mondo.dir/build
-.PHONY : 02_ciao_mondo/fast
+05_somma_quadrati_maggiori/fast:
+	$(MAKE) -f CMakeFiles/05_somma_quadrati_maggiori.dir/build.make CMakeFiles/05_somma_quadrati_maggiori.dir/build
+.PHONY : 05_somma_quadrati_maggiori/fast
+
+#=============================================================================
+# Target rules for targets named 03_quadrato
+
+# Build rule for target.
+03_quadrato: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 03_quadrato
+.PHONY : 03_quadrato
+
+# fast build rule for target.
+03_quadrato/fast:
+	$(MAKE) -f CMakeFiles/03_quadrato.dir/build.make CMakeFiles/03_quadrato.dir/build
+.PHONY : 03_quadrato/fast
+
+#=============================================================================
+# Target rules for targets named 04_fattoriale
+
+# Build rule for target.
+04_fattoriale: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 04_fattoriale
+.PHONY : 04_fattoriale
+
+# fast build rule for target.
+04_fattoriale/fast:
+	$(MAKE) -f CMakeFiles/04_fattoriale.dir/build.make CMakeFiles/04_fattoriale.dir/build
+.PHONY : 04_fattoriale/fast
+
+#=============================================================================
+# Target rules for targets named 06_risolvi_eq_2
+
+# Build rule for target.
+06_risolvi_eq_2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 06_risolvi_eq_2
+.PHONY : 06_risolvi_eq_2
+
+# fast build rule for target.
+06_risolvi_eq_2/fast:
+	$(MAKE) -f CMakeFiles/06_risolvi_eq_2.dir/build.make CMakeFiles/06_risolvi_eq_2.dir/build
+.PHONY : 06_risolvi_eq_2/fast
 
 ciao_mondo.o: ciao_mondo.cpp.o
 
@@ -216,6 +281,60 @@ fattoriale.cpp.s:
 	$(MAKE) -f CMakeFiles/04_fattoriale.dir/build.make CMakeFiles/04_fattoriale.dir/fattoriale.cpp.s
 .PHONY : fattoriale.cpp.s
 
+massimo3.o: massimo3.cpp.o
+
+.PHONY : massimo3.o
+
+# target to build an object file
+massimo3.cpp.o:
+	$(MAKE) -f CMakeFiles/07_massimo3.dir/build.make CMakeFiles/07_massimo3.dir/massimo3.cpp.o
+.PHONY : massimo3.cpp.o
+
+massimo3.i: massimo3.cpp.i
+
+.PHONY : massimo3.i
+
+# target to preprocess a source file
+massimo3.cpp.i:
+	$(MAKE) -f CMakeFiles/07_massimo3.dir/build.make CMakeFiles/07_massimo3.dir/massimo3.cpp.i
+.PHONY : massimo3.cpp.i
+
+massimo3.s: massimo3.cpp.s
+
+.PHONY : massimo3.s
+
+# target to generate assembly for a file
+massimo3.cpp.s:
+	$(MAKE) -f CMakeFiles/07_massimo3.dir/build.make CMakeFiles/07_massimo3.dir/massimo3.cpp.s
+.PHONY : massimo3.cpp.s
+
+pi_quarti.o: pi_quarti.cpp.o
+
+.PHONY : pi_quarti.o
+
+# target to build an object file
+pi_quarti.cpp.o:
+	$(MAKE) -f CMakeFiles/09_pi_quarti.dir/build.make CMakeFiles/09_pi_quarti.dir/pi_quarti.cpp.o
+.PHONY : pi_quarti.cpp.o
+
+pi_quarti.i: pi_quarti.cpp.i
+
+.PHONY : pi_quarti.i
+
+# target to preprocess a source file
+pi_quarti.cpp.i:
+	$(MAKE) -f CMakeFiles/09_pi_quarti.dir/build.make CMakeFiles/09_pi_quarti.dir/pi_quarti.cpp.i
+.PHONY : pi_quarti.cpp.i
+
+pi_quarti.s: pi_quarti.cpp.s
+
+.PHONY : pi_quarti.s
+
+# target to generate assembly for a file
+pi_quarti.cpp.s:
+	$(MAKE) -f CMakeFiles/09_pi_quarti.dir/build.make CMakeFiles/09_pi_quarti.dir/pi_quarti.cpp.s
+.PHONY : pi_quarti.cpp.s
+
 quadrato.o: quadrato.cpp.o
 
 .PHONY : quadrato.o
@@ -270,6 +389,87 @@ ridotto.cpp.s:
 	$(MAKE) -f CMakeFiles/01_ridotto.dir/build.make CMakeFiles/01_ridotto.dir/ridotto.cpp.s
 .PHONY : ridotto.cpp.s
 
+risolvi_eq_2.o: risolvi_eq_2.cpp.o
+
+.PHONY : risolvi_eq_2.o
+
+# target to build an object file
+risolvi_eq_2.cpp.o:
+	$(MAKE) -f CMakeFiles/06_risolvi_eq_2.dir/build.make CMakeFiles/06_risolvi_eq_2.dir/risolvi_eq_2.cpp.o
+.PHONY : risolvi_eq_2.cpp.o
+
+risolvi_eq_2.i: risolvi_eq_2.cpp.i
+
+.PHONY : risolvi_eq_2.i
+
+# target to preprocess a source file
+risolvi_eq_2.cpp.i:
+	$(MAKE) -f CMakeFiles/06_risolvi_eq_2.dir/build.make CMakeFiles/06_risolvi_eq_2.dir/risolvi_eq_2.cpp.i
+.PHONY : risolvi_eq_2.cpp.i
+
+risolvi_eq_2.s: risolvi_eq_2.cpp.s
+
+.PHONY : risolvi_eq_2.s
+
+# target to generate assembly for a file
+risolvi_eq_2.cpp.s:
+	$(MAKE) -f CMakeFiles/06_risolvi_eq_2.dir/build.make CMakeFiles/06_risolvi_eq_2.dir/risolvi_eq_2.cpp.s
+.PHONY : risolvi_eq_2.cpp.s
+
+somma_inversi_potenze.o: somma_inversi_potenze.cpp.o
+
+.PHONY : somma_inversi_potenze.o
+
+# target to build an object file
+somma_inversi_potenze.cpp.o:
+	$(MAKE) -f CMakeFiles/08_somma_inversi_potenze.dir/build.make CMakeFiles/08_somma_inversi_potenze.dir/somma_inversi_potenze.cpp.o
+.PHONY : somma_inversi_potenze.cpp.o
+
+somma_inversi_potenze.i: somma_inversi_potenze.cpp.i
+
+.PHONY : somma_inversi_potenze.i
+
+# target to preprocess a source file
+somma_inversi_potenze.cpp.i:
+	$(MAKE) -f CMakeFiles/08_somma_inversi_potenze.dir/build.make CMakeFiles/08_somma_inversi_potenze.dir/somma_inversi_potenze.cpp.i
+.PHONY : somma_inversi_potenze.cpp.i
+
+somma_inversi_potenze.s: somma_inversi_potenze.cpp.s
+
+.PHONY : somma_inversi_potenze.s
+
+# target to generate assembly for a file
+somma_inversi_potenze.cpp.s:
+	$(MAKE) -f CMakeFiles/08_somma_inversi_potenze.dir/build.make CMakeFiles/08_somma_inversi_potenze.dir/somma_inversi_potenze.cpp.s
+.PHONY : somma_inversi_potenze.cpp.s
+
+somma_quadrati_maggiori.o: somma_quadrati_maggiori.cpp.o
+
+.PHONY : somma_quadrati_maggiori.o
+
+# target to build an object file
+somma_quadrati_maggiori.cpp.o:
+	$(MAKE) -f CMakeFiles/05_somma_quadrati_maggiori.dir/build.make CMakeFiles/05_somma_quadrati_maggiori.dir/somma_quadrati_maggiori.cpp.o
+.PHONY : somma_quadrati_maggiori.cpp.o
+
+somma_quadrati_maggiori.i: somma_quadrati_maggiori.cpp.i
+
+.PHONY : somma_quadrati_maggiori.i
+
+# target to preprocess a source file
+somma_quadrati_maggiori.cpp.i:
+	$(MAKE) -f CMakeFiles/05_somma_quadrati_maggiori.dir/build.make CMakeFiles/05_somma_quadrati_maggiori.dir/somma_quadrati_maggiori.cpp.i
+.PHONY : somma_quadrati_maggiori.cpp.i
+
+somma_quadrati_maggiori.s: somma_quadrati_maggiori.cpp.s
+
+.PHONY : somma_quadrati_maggiori.s
+
+# target to generate assembly for a file
+somma_quadrati_maggiori.cpp.s:
+	$(MAKE) -f CMakeFiles/05_somma_quadrati_maggiori.dir/build.make CMakeFiles/05_somma_quadrati_maggiori.dir/somma_quadrati_maggiori.cpp.s
+.PHONY : somma_quadrati_maggiori.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -277,23 +477,43 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
+	@echo "... 09_pi_quarti"
+	@echo "... 08_somma_inversi_potenze"
 	@echo "... edit_cache"
-	@echo "... 04_fattoriale"
-	@echo "... 03_quadrato"
-	@echo "... 01_ridotto"
+	@echo "... 07_massimo3"
 	@echo "... 02_ciao_mondo"
+	@echo "... 01_ridotto"
+	@echo "... 05_somma_quadrati_maggiori"
+	@echo "... 03_quadrato"
+	@echo "... 04_fattoriale"
+	@echo "... 06_risolvi_eq_2"
 	@echo "... ciao_mondo.o"
 	@echo "... ciao_mondo.i"
 	@echo "... ciao_mondo.s"
 	@echo "... fattoriale.o"
 	@echo "... fattoriale.i"
 	@echo "... fattoriale.s"
+	@echo "... massimo3.o"
+	@echo "... massimo3.i"
+	@echo "... massimo3.s"
+	@echo "... pi_quarti.o"
+	@echo "... pi_quarti.i"
+	@echo "... pi_quarti.s"
 	@echo "... quadrato.o"
 	@echo "... quadrato.i"
 	@echo "... quadrato.s"
 	@echo "... ridotto.o"
 	@echo "... ridotto.i"
 	@echo "... ridotto.s"
+	@echo "... risolvi_eq_2.o"
+	@echo "... risolvi_eq_2.i"
+	@echo "... risolvi_eq_2.s"
+	@echo "... somma_inversi_potenze.o"
+	@echo "... somma_inversi_potenze.i"
+	@echo "... somma_inversi_potenze.s"
+	@echo "... somma_quadrati_maggiori.o"
+	@echo "... somma_quadrati_maggiori.i"
+	@echo "... somma_quadrati_maggiori.s"
 .PHONY : help
 
 

@@ -42,8 +42,13 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/04_fattoriale.dir/DependInfo.cmake"
-  "CMakeFiles/03_quadrato.dir/DependInfo.cmake"
-  "CMakeFiles/01_ridotto.dir/DependInfo.cmake"
+  "CMakeFiles/09_pi_quarti.dir/DependInfo.cmake"
+  "CMakeFiles/08_somma_inversi_potenze.dir/DependInfo.cmake"
+  "CMakeFiles/07_massimo3.dir/DependInfo.cmake"
   "CMakeFiles/02_ciao_mondo.dir/DependInfo.cmake"
+  "CMakeFiles/01_ridotto.dir/DependInfo.cmake"
+  "CMakeFiles/05_somma_quadrati_maggiori.dir/DependInfo.cmake"
+  "CMakeFiles/03_quadrato.dir/DependInfo.cmake"
+  "CMakeFiles/04_fattoriale.dir/DependInfo.cmake"
+  "CMakeFiles/06_risolvi_eq_2.dir/DependInfo.cmake"
   )
