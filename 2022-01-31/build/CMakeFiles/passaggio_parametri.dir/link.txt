@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/passaggio_parametri.dir/passaggio_parametri.cpp.o  -o passaggio_parametri 
