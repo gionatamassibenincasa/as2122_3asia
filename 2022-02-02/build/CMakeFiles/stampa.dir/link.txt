@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/stampa.dir/stampa.cpp.o  -o stampa 
