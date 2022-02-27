@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "firebase": "^9.6.7",
+    "firebaseui": "^6.0.1",
     "JSCPP": "^2.0.9",
     "katex": "^0.15.2",
     "rehype-katex": "^6.0.2",

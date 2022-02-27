@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/06_risolvi_eq_2.dir/risolvi_eq_2.cpp.o  -o 06_risolvi_eq_2 

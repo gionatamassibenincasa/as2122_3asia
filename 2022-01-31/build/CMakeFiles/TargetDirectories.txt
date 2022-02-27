@@ -1,0 +1,4 @@
+/home/runner/as21223asia/2022-01-31/build/CMakeFiles/rebuild_cache.dir
+/home/runner/as21223asia/2022-01-31/build/CMakeFiles/edit_cache.dir
+/home/runner/as21223asia/2022-01-31/build/CMakeFiles/passaggio_parametri.dir
+/home/runner/as21223asia/2022-01-31/build/CMakeFiles/enumerazioni.dir

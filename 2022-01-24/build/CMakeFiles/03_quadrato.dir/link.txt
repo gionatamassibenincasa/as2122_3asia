@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/03_quadrato.dir/quadrato.cpp.o  -o 03_quadrato 

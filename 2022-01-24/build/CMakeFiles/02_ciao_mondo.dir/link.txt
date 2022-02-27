@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/02_ciao_mondo.dir/ciao_mondo.cpp.o  -o 02_ciao_mondo 

@@ -1,0 +1,11 @@
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/rebuild_cache.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/09_pi_quarti.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/08_somma_inversi_potenze.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/edit_cache.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/07_massimo3.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/02_ciao_mondo.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/01_ridotto.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/05_somma_quadrati_maggiori.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/03_quadrato.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/04_fattoriale.dir
+/home/runner/as21223asia/2022-01-24/build/CMakeFiles/06_risolvi_eq_2.dir
