@@ -1,0 +1,1 @@
+Fattoriale - usa le primitive che preferisci

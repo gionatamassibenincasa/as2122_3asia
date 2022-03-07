@@ -1,0 +1,1 @@
+Moltiplicazione - usare le primitive che preferisci tranne `*`

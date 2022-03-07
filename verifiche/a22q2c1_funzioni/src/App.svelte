@@ -5,24 +5,10 @@
   import "brace/theme/chrome";
   import "brace/ext/language_tools";
   import "brace/snippets/c_cpp";
-  //onMount(() => {});
-
-  import { Esercizio, generaEsercizi } from "./esercizi";
-  const esercizi: Array<Esercizio> = generaEsercizi("3 A SIA", "2022-03-02");
+  import esercizi from "./esercizi.json";
   import authStore from "./authStore";
   import { consegnaCompito } from "./db";
-  // import "JSCPP";
-  const options: any = {
-    enableBasicAutocompletion: true,
-    enableSnippets: true,
-    enableLiveAutocompletion: false,
-  };
-  const vc_normal: string =
-    "min-height: 25px; background-color: grey; color: azure;";
-  const vc_error: string =
-    "min-height: 25px; background-color: red; color: yellow;";
 
-  // Import the functions you need from the SDKs you need
   import { initializeApp, getApps, getApp } from "firebase/app";
   import { getFirestore, collection, addDoc } from "firebase/firestore";
   import {
@@ -32,10 +18,6 @@
     GoogleAuthProvider,
   } from "firebase/auth";
 
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyB8ZJJioIlN-5_QfqV8yNjqPGbBxfVTIY4",
     authDomain: "raccoglicompiti.firebaseapp.com",
@@ -48,20 +30,18 @@
   const firebaseApp =
     getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
   const db = getFirestore(firebaseApp);
-  console.log(firebaseApp, db);
-
   authStore.subscribe(async ({ isLoggedIn, firebaseControlled }) => {
     if (!isLoggedIn && firebaseControlled) {
       //await goto("/login");
     }
   });
-  // const analytics = getAnalytics(firebaseApp);
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
   auth.languageCode = "it";
 
   const login = () => {
     console.log("Procedura di login");
+    if (studente !== null) return;
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access Google APIs.
@@ -71,8 +51,8 @@
         // The signed-in user info.
         studente = result.user;
         authStore.set({
-          isLoggedIn: user !== null,
-          studente: user,
+          isLoggedIn: result.user !== null,
+          studente: result.user,
           firebaseControlled: true,
         });
         console.log(studente);
@@ -88,8 +68,17 @@
         // ...
       });
   };
-
   let studente = auth.currentUser;
+
+  const options: any = {
+    enableBasicAutocompletion: true,
+    enableSnippets: true,
+    enableLiveAutocompletion: false,
+  };
+  const vc_normal: string =
+    "min-height: 25px; background-color: grey; color: azure;";
+  const vc_error: string =
+    "min-height: 25px; background-color: red; color: yellow;";
 
   async function raccolta() {
     const colRef = collection(db, "compito");
@@ -103,20 +92,6 @@
       json: JSON.stringify(ambienti),
     });
     return 0;
-  }
-
-  function writeUserData(): void {
-    console.log("Invio");
-    consegnaCompito(ambienti, studente);
-    /*
-	  set(ref(db, "compito/" + Date()), {
-      cognome: cognome,
-      nome: nome,
-      email: nome + "." + "cognome" + "@savoiabenincasa.it",
-      istanteConsegna: Date(),
-      json: JSON.stringify(esercizi),
-      punti: 0,
-    });*/
   }
 
   class Ambiente {
@@ -179,36 +154,6 @@
   for (let i = 0; i < n; i++) {
     ambienti[i] = new Ambiente(i, esercizi);
   }
-
-  /*
-  let mail_sub;
-  let mail_body;
-  $: mail_sub = "Compito 3A " + nome + " " + cognome;
-  $: mail_body = JSON.stringify(ambienti);
-  */
-  /*
-     <AceEditor
-      on:selectionChange={(obj) => console.log(obj.detail)}
-      on:paste={(obj) => console.log(obj.detail)}
-      on:input={(obj) => console.log(obj.detail)}
-      on:focus={() => console.log("focus")}
-      on:documentChange={(obj) =>
-        console.log(`document change : ${obj.detail}`)}
-      on:cut={() => console.log("cut")}
-      on:cursorChange={() => console.log("cursor change")}
-      on:copy={() => console.log("copy")}
-      on:init={(editor) => console.log(editor.detail)}
-      on:commandKey={(obj) => console.log(obj.detail)}
-      on:changeMode={(obj) => console.log(`change mode : ${obj.detail}`)}
-      on:blur={() => console.log("blur")}
-      width="100%"
-      height="600px"
-      lang="c_cpp"
-      theme="chrome"
-      bind:value={ambienti[indice].src}
-      {options}
-    />
-*/
 </script>
 
 <svelte:head>
@@ -227,7 +172,7 @@
 <h1>Compito {classe} - {giorno} - C/C++</h1>
 
 {#if studente}
-  <h2>2. Giochi numerici di Giovanni Omonovo</h2>
+  <h2>Giochi numerici di Giovanni Omonovo</h2>
 
   <p>
     Giovanni è un progettista che vuole costuire un calcolatore programmabile
@@ -296,36 +241,38 @@
   </p>
 
   {#each esercizi as esercizio, indice}
-    {#if indice > 1}
-      <hr />
-    {/if}
+    <hr />
+    <section>
+      <header class="titolo-problema">
+        <h3>Es. {indice + 1}</h3>
 
-    <h3>Es. {indice + 1} -- {esercizio.progetto}</h3>
-    <p>{@html esercizio.testo}</p>
-    <AceEditor
-      width="100%"
-      height="600px"
-      lang="c_cpp"
-      theme="chrome"
-      bind:value={ambienti[indice].src}
-      {options}
-    />
+        {@html esercizio.progetto}
+      </header>
+      <p>{@html esercizio.testo}</p>
+      <AceEditor
+        width="100%"
+        height="600px"
+        lang="c_cpp"
+        theme="chrome"
+        bind:value={ambienti[indice].src}
+        {options}
+      />
 
-    <button on:click={ambienti[indice].esegui.bind(ambienti[indice])}
-      >Esegui</button
-    >
-    <button on:click={ambienti[indice].ripristina.bind(ambienti[indice])}
-      >Ripristina</button
-    >
-    <pre style={ambienti[indice].vconsole_style}>{ambienti[indice]
-        .vconsole}</pre>
+      <button on:click={ambienti[indice].esegui.bind(ambienti[indice])}
+        >Esegui</button
+      >
+      <button on:click={ambienti[indice].ripristina.bind(ambienti[indice])}
+        >Ripristina</button
+      >
+      <pre style={ambienti[indice].vconsole_style}>{ambienti[indice]
+          .vconsole}</pre>
+    </section>
   {/each}
-
   <hr />
 
-  <h2>3. Invia il compito</h2>
+  <h2>Invia il compito</h2>
 
-  <button on:click={writeUserData}>
+  <button on:click={consegnaCompito(ambienti, studente)}>
     <!--a
       href={`mailto:gionata.massi@savoiabenincasa.it?subject=${mail_sub}&body=${mail_body}`}
 	-->
@@ -340,3 +287,11 @@
   <p>Premi il tasto Login per continuare...</p>
   <button on:click={login}>Login</button>
 {/if}
+
+<style>
+  .titolo-problema {
+    font-size: 1.17em;
+    font-weight: bold;
+    display: inline-block;
+  }
+</style>
