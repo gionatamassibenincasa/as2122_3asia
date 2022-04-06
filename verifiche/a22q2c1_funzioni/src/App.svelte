@@ -16,8 +16,26 @@
     getRedirectResult,
     signInWithPopup,
     GoogleAuthProvider,
+    setPersistence,
+    browserSessionPersistence,
+    onAuthStateChanged,
   } from "firebase/auth";
-
+  import {
+    Button,
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    CardSubtitle,
+    CardText,
+    CardTitle,
+    Col,
+    Container,
+    ListGroup,
+    ListGroupItem,
+    Row,
+    Toast,
+  } from "sveltestrap";
   const firebaseConfig = {
     apiKey: "AIzaSyB8ZJJioIlN-5_QfqV8yNjqPGbBxfVTIY4",
     authDomain: "raccoglicompiti.firebaseapp.com",
@@ -27,6 +45,7 @@
     appId: "1:336748289396:web:856c25be3b927a289e2021",
     measurementId: "G-K16NLG6KYK",
   };
+  let isLocal = eval('window.location.hostname == "localhost"');
   const firebaseApp =
     getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
   const db = getFirestore(firebaseApp);
@@ -37,12 +56,44 @@
   });
   const provider = new GoogleAuthProvider();
   const auth = getAuth();
+  const user = auth.currentUser;
+  if (user !== null) {
+    authStore.set({
+      isLoggedIn: user !== null,
+      studente: user,
+      firebaseControlled: true,
+    });
+    // The user object has basic properties such as display name, email, etc.
+    const displayName = user.displayName;
+    const email = user.email;
+    const photoURL = user.photoURL;
+    const emailVerified = user.emailVerified;
+
+    // The user's ID, unique to the Firebase project. Do NOT use
+    // this value to authenticate with your backend server, if
+    // you have one. Use User.getToken() instead.
+    const uid = user.uid;
+  }
+  setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      // Existing and future Auth states are now persisted in the current
+      // session only. Closing the window would clear any existing state even
+      // if a user forgets to sign out.
+      // ...
+      // New sign-in will be persisted with session persistence.
+      return login();
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
   auth.languageCode = "it";
 
-  const login = () => {
+  function login() {
     console.log("Procedura di login");
     if (studente !== null) return;
-    signInWithPopup(auth, provider)
+    return signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access Google APIs.
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -67,7 +118,7 @@
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
-  };
+  }
   let studente = auth.currentUser;
 
   const options: any = {
@@ -148,7 +199,7 @@
   let nome = "";
   let cognome = "";
   let classe = "3A SIA";
-  const giorno = "2022-03-02";
+  const giorno = "2022-04-06";
   const n = esercizi.length;
   let ambienti: Ambiente[] = new Array(n);
   for (let i = 0; i < n; i++) {
@@ -157,6 +208,14 @@
 </script>
 
 <svelte:head>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+  />
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
@@ -168,117 +227,174 @@
     src="https://cdn.jsdelivr.net/npm/JSCPP@2.0.6/dist/JSCPP.es5.min.js"></script>
   <title>Compito C/C++</title>
 </svelte:head>
+<Container>
+  <Row>
+    <Col><h1>Compito {classe} - {giorno} - C/C++</h1></Col>
+  </Row>
+</Container>
+{#if studente || isLocal}
+  <Container>
+    <Row>
+      <Col>
+        <h2>Giochi numerici di Giovanni Omonovo</h2>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <p>
+          Giovanni è un progettista che vuole costuire un calcolatore
+          programmabile che sappia realizzare le operazioni aritmetiche con i
+          numeri naturali.
+        </p>
+        <p>
+          Egli progetta una CPU che include solo tre funzioni primitive per
+          operare con i numeri naturali:
+        </p>
+      </Col>
+    </Row>
+    <Row>
+      <ListGroup>
+        <ListGroupItem
+          ><pre><code>zero(n)</code></pre>
+          che restituisce vero se n = 0,
+        </ListGroupItem>
+        <ListGroupItem
+          ><pre><code>piuUno(n)</code></pre>
+          che restituisce n + 1, e</ListGroupItem
+        >
+        <ListGroupItem
+          ><pre><code>menoUno(n)</code></pre>
+          che restituisce n - 1 se n &gt; 0.</ListGroupItem
+        >
+      </ListGroup>
+    </Row>
 
-<h1>Compito {classe} - {giorno} - C/C++</h1>
+    <Row>
+      <Col>
+        Aggiunge ad un compilatore C++ le istruzioni per il suo linguaggio
+        macchina ma è in difficoltà nello scrivere la libreria in C++ per
+        definire le seguenti operazioni tra numeri naturali:
+      </Col>
+      <ListGroup>
+        <ListGroupItem>
+          <pre><code>addizione(n, m)</code></pre>
+          , che restituisce n + m,
+        </ListGroupItem>
+        <ListGroupItem>
+          <pre><code>sottrazione(n, m)</code></pre>
+          , che restituisce n - m,
+        </ListGroupItem>
+        <ListGroupItem>
+          <pre><code>moltiplicazione(n, m)</code></pre>
+          , che restituisce n * m, e
+        </ListGroupItem>
+        <ListGroupItem>
+          <pre><code>divisione(n, m)</code></pre>
+          , che restituisce il numero q tale che n = q * m + r, dove 0 &leq; r &lt;
+          m.
+        </ListGroupItem>
+        <ListGroupItem>
+          <pre><code>potenza(n, m)</code></pre>
+          , che restituisce n elevato alla m-esima potenza.
+        </ListGroupItem>
+        <ListGroupItem>
+          <pre><code>fattoriale(n)</code></pre>
+          , che restituisce il fattoriale di n.
+        </ListGroupItem>
+        <ListGroupItem>
+          <pre><code>Fibonacci(n)</code></pre>
+          , che restituisce l'n-esimo elemento della successione di Fibonacci.
+        </ListGroupItem>
+      </ListGroup>
+    </Row>
+    <Row>
+      <Col>
+        Giovanni scopre di poter estendere le operazioni del suo computer per
+        una rappresentazione i numeri in virgola mobile. Riesce a scrivere
+        realizzare le operazioni di moltiplicazione e differenza e deve
+        aggiungere il reciproco usando una nota formula iterativa.
+      </Col>
+      <ListGroup>
+        <ListGroupItem>
+          <pre><code>float reciproco(float x)</code></pre>
+          , che calcola il reciproco di x.
+        </ListGroupItem>
+      </ListGroup>
+    </Row>
+    <Row>
+      <Col>
+        Giovanni scopre anche il metodo di Erone di Alessandria per il calcolo
+        della radice in virgola mobile e la fornisce come metodo di libreria per
+        tale calcolo.
+      </Col>
+      <ListGroup>
+        <ListGroupItem>
+          <pre><code>float radq(float x)</code></pre>
+          , che calcola la radice quadrata di x.
+        </ListGroupItem>
+      </ListGroup>
+    </Row>
+  </Container>
+  <Container>
+    {#each esercizi as esercizio, indice}
+      <Row>
+        <Col>
+          <Card class="mb-3">
+            <CardHeader>
+              <CardTitle
+                >Es. {indice + 1} &mdash; {@html esercizio.progetto.substr(
+                  3,
+                  esercizio.progetto.length - 7
+                )}</CardTitle
+              >
+            </CardHeader>
+            <CardBody>
+              <CardSubtitle>{@html esercizio.testo}</CardSubtitle>
+              <CardText>
+                <AceEditor
+                  width="100%"
+                  height="600px"
+                  lang="c_cpp"
+                  theme="chrome"
+                  bind:value={ambienti[indice].src}
+                  {options}
+                />
+              </CardText>
 
-{#if studente}
-  <h2>Giochi numerici di Giovanni Omonovo</h2>
+              <Button
+                color="danger"
+                on:click={ambienti[indice].esegui.bind(ambienti[indice])}
+                >Esegui</Button
+              >
+              <Button
+                color="warning"
+                on:click={ambienti[indice].ripristina.bind(ambienti[indice])}
+                >Ripristina</Button
+              >
+            </CardBody>
+            <CardFooter
+              ><pre style={ambienti[indice].vconsole_style}>{ambienti[indice]
+                  .vconsole}</pre></CardFooter
+            >
+          </Card>
+        </Col>
+      </Row>
+    {/each}
+  </Container>
 
-  <p>
-    Giovanni è un progettista che vuole costuire un calcolatore programmabile
-    che sappia realizzare le operazioni aritmetiche con i numeri naturali.
-  </p>
-  <p>
-    Egli progetta una CPU che include solo tre funzioni primitive per operare
-    con i numeri naturali:
-  </p>
-  <ol>
-    <li>
-      <pre><code>zero(n)</code></pre>
-      che restituisce vero se n = 0,
-    </li>
-    <li>
-      <pre><code>piuUno(n)</code></pre>
-      che restituisce n + 1, e
-    </li>
-    <li>
-      <pre><code>menoUno(n)</code></pre>
-      che restituisce n - 1 se n &gt; 0.
-    </li>
-  </ol>
-
-  <p>
-    Aggiunge ad un compilatore C++ le istruzioni per il suo linguaggio macchina
-    ma è in difficoltà nello scrivere la libreria in C++ per definire le
-    seguenti operazioni tra numeri naturali:
-  </p>
-  <ul>
-    <li>
-      <pre><code>addizione(n, m)</code></pre>
-      , che restituisce n + m,
-    </li>
-    <li>
-      <pre><code>sottrazione(n, m)</code></pre>
-      , che restituisce n - m,
-    </li>
-    <li>
-      <pre><code>moltiplicazione(n, m)</code></pre>
-      , che restituisce n * m, e
-    </li>
-    <li>
-      <pre><code>divisione(n, m)</code></pre>
-      , che restituisce il numero q tale che n = q * m + r, dove 0 &leq; r &lt; m.
-    </li>
-    <li>
-      <pre><code>potenza(n, m)</code></pre>
-      , che restituisce n elevato alla m-esima potenza.
-    </li>
-    <li>
-      <pre><code>fattoriale(n)</code></pre>
-      , che restituisce il fattoriale di n.
-    </li>
-    <li>
-      <pre><code>Fibonacci(n)</code></pre>
-      , che l'n-esimo elemento della successione di Fibonacci.
-    </li>
-  </ul>
-
-  <p>
-    Giovanni scopre di poter estendere le operazioni del suo computer per una
-    rappresentazione i numeri in virgola mobile. Riesce a scrivere realizzare le
-    operazioni di moltiplicazione e differenza e deve aggiungere il reciproco
-    usano una nota formula iterativa.
-  </p>
-
-  {#each esercizi as esercizio, indice}
-    <hr />
-    <section>
-      <header class="titolo-problema">
-        <h3>Es. {indice + 1}</h3>
-
-        {@html esercizio.progetto}
-      </header>
-      <p>{@html esercizio.testo}</p>
-      <AceEditor
-        width="100%"
-        height="600px"
-        lang="c_cpp"
-        theme="chrome"
-        bind:value={ambienti[indice].src}
-        {options}
-      />
-
-      <button on:click={ambienti[indice].esegui.bind(ambienti[indice])}
-        >Esegui</button
+  <Container>
+    <Row>
+      <h2>Invia il compito</h2>
+    </Row>
+    <Row>
+      <Button color="primary" on:click={consegnaCompito(ambienti, studente)}
+        >Consegna</Button
       >
-      <button on:click={ambienti[indice].ripristina.bind(ambienti[indice])}
-        >Ripristina</button
-      >
-      <pre style={ambienti[indice].vconsole_style}>{ambienti[indice]
-          .vconsole}</pre>
-    </section>
-  {/each}
-  <hr />
-
-  <h2>Invia il compito</h2>
-
-  <button on:click={consegnaCompito(ambienti, studente)}>
+    </Row>
     <!--a
-      href={`mailto:gionata.massi@savoiabenincasa.it?subject=${mail_sub}&body=${mail_body}`}
-	-->
-    Invia
-    <!--/a-->
-  </button>
+        href={`mailto:gionata.massi@savoiabenincasa.it?subject=${mail_sub}&body=${mail_body}`}
+    -->
+  </Container>
 {:else}
   <p>
     Per visualizzare il compito devi autenticarti con il tuo account Google
@@ -289,9 +405,9 @@
 {/if}
 
 <style>
-  .titolo-problema {
-    font-size: 1.17em;
-    font-weight: bold;
-    display: inline-block;
+  pre,
+  code {
+    display: inline;
+    color: rgb(255, 0, 127);
   }
 </style>

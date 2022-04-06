@@ -34,6 +34,7 @@ var dirEsercizi = [
   "fattoriale",
   "fibonacci",
   "reciproco",
+  "radq",
 ];
 dirEsercizi.forEach(function (dir) {
   dir = "esercizi/" + dir;

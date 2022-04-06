@@ -36,6 +36,7 @@ export const consegnaCompito = async (compito: Compito, user: any) => {
   const compitoRef = await collection(db, "compito");
   console.log(compitoRef);
   await addDoc(compitoRef, consegna);
+  alert("Compito consegnato");
 
   return compitoRef;
 };
