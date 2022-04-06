@@ -50,7 +50,7 @@ int potenza_ric_log(int base, int esp) {
 int potenza_ite_log(int base, int esp) {
   int a = 1;
   while (esp > 0) {
-    if (esp % 2) {
+    if (esp % 2 == 0) {
       base *= base;
       esp /= 2;
     } else {
